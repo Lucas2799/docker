@@ -1,0 +1,23 @@
+# NÃO EDITE ESTE ARQUIVO.
+# Este é o "antes" — um Dockerfile funcional, mas ineficiente de propósito.
+# Seu trabalho é escrever um Dockerfile novo (bom) do zero, não consertar este.
+
+FROM mcr.microsoft.com/dotnet/sdk:8.0
+
+WORKDIR /src
+
+COPY . .
+
+RUN apt-get update && apt-get install -y vim curl git vim-common less htop net-tools
+
+RUN dotnet restore
+RUN dotnet publish -c Release -o /app
+
+WORKDIR /app
+
+ENV ASPNETCORE_ENVIRONMENT=Development
+ENV ASPNETCORE_URLS=http://+:8080
+
+EXPOSE 8080
+
+ENTRYPOINT ["dotnet", "docker-study-api.dll"]
