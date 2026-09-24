@@ -1,0 +1,21 @@
+cat > .gitignore << 'EOF'
+## Ignore Visual Studio temporary files
+bin/
+obj/
+.vs/
+*.user
+*.suo
+*.sln.docstates
+
+## Ignore NuGet
+*.nupkg
+.nuget/
+
+## Ignore logs
+*.log
+logs/
+
+## Ignore IDE
+.vscode/
+.idea/
+EOF
